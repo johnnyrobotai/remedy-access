@@ -123,7 +123,7 @@ async def query(store_name: str, question: str) -> AskResult:
                 )
             ],
             temperature=0.1,
-            thinking_config=thinking_config(),
+            thinking_config=thinking_config(settings.gemini_ask_model),
         ),
     )
 

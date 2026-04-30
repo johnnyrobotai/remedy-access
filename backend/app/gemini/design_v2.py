@@ -107,7 +107,7 @@ async def _plan_layout_with_gemini(
                     system_instruction=LAYOUT_PLANNER_SYSTEM,
                     temperature=0.0,
                     max_output_tokens=8192,
-                    thinking_config=thinking_config(),
+                    thinking_config=thinking_config(settings.gemini_ask_model),
                 ),
             ),
             timeout=max(45.0, settings.gemini_call_timeout / 2),

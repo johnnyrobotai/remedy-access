@@ -358,7 +358,7 @@ async def plan_pdf(
                 system_instruction=system_instruction,
                 temperature=temperature,
                 max_output_tokens=65_536,
-                thinking_config=thinking_config(),
+                thinking_config=thinking_config(settings.gemini_ask_model),
             ),
         )
 

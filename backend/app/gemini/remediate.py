@@ -358,7 +358,7 @@ async def remediate_document(
                 system_instruction=system_instruction,
                 temperature=temperature,
                 max_output_tokens=32_768,
-                thinking_config=thinking_config(),
+                thinking_config=thinking_config(settings.gemini_remediation_model),
             ),
         )
 
@@ -539,7 +539,7 @@ async def _remediate_chunk(
                 system_instruction=prompts.REMEDIATION_CHUNK_SYSTEM,
                 temperature=temperature,
                 max_output_tokens=65_536,
-                thinking_config=thinking_config(),
+                thinking_config=thinking_config(settings.gemini_remediation_model),
             ),
         )
 
