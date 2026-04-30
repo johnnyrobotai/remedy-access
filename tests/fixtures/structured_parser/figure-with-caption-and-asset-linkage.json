@@ -1,0 +1,41 @@
+{
+  "schema_version": "structured-render-v2",
+  "source_format": "pdf",
+  "title": "Operating the Harbor Lift",
+  "summary": "Instructional reference showing the control panel figure with explicit asset linkage and accessibility hints.",
+  "language": "en",
+  "page_count": 4,
+  "doc_kind": "reference_doc",
+  "body": [
+    {
+      "id": "control-panel",
+      "type": "section",
+      "heading": "Control Panel",
+      "level": 2,
+      "page_start": 3,
+      "page_end": 3,
+      "placement": "inline",
+      "blocks": [
+        {
+          "id": "control-panel-summary",
+          "type": "paragraph",
+          "text": "Operators should review the control panel before energizing the harbor lift and confirm the emergency stop is unobstructed.",
+          "page_start": 3,
+          "page_end": 3,
+          "placement": "before"
+        },
+        {
+          "id": "control-panel-overview",
+          "type": "figure",
+          "asset_id": "img-003",
+          "caption": "Control panel layout with the emergency stop centered below the mode selector.",
+          "alt_text_hint": "Annotated control panel showing labeled buttons, status lights, and the red emergency stop.",
+          "description_hint": "The red emergency stop sits below the black mode selector and above the row of status lights on the lower panel.",
+          "page_start": 3,
+          "page_end": 3,
+          "placement": "rail"
+        }
+      ]
+    }
+  ]
+}

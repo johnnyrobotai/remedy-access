@@ -1,0 +1,212 @@
+{
+  "pages": [
+    {
+      "page": 1,
+      "width": 595.2756,
+      "height": 841.8898,
+      "text": "    Denny Gunawan\n\n\n    221 Queen St\n    Melbourne VIC 3000\n\n\n\n\n\n123 Somewhere St, Melbourne VIC 3000    $39.60\n           (03) 1234 5678\n\n\n   Invoice Number: #20130304\n\n    Organic Items  Price/kg  Quantity(kg)  Subtotal\n\n    Apple           $5.00         1           $5.00\n\n    Orange          $1.99         2           $3.98\n\n    Watermelon      $1.69         3           $5.07\n\n    Mango           $9.56         2          $19.12\n\n    Peach           $2.99         1           $2.99\n\n\n\n\n\n\n\n\n\n\n                                                                               Subtotal    $36.00\n                                                                               GST (10%)    $3.60\n\n  * Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales   Total       $39.60\n  dapibus fermentum. Nunc adipiscing, magna sed scelerisque cursus, erat\n  lectus dapibus urna, sed facilisis leo dui et ipsum.",
+      "textItems": [
+        {
+          "text": "Denny ",
+          "x": 366.5256,
+          "y": 113.69119999999998,
+          "width": 49.964999999999975,
+          "height": 15,
+          "fontName": "g_d0_f1",
+          "fontSize": 15
+        },
+        {
+          "text": "Gunawan",
+          "x": 416.49059999999986,
+          "y": 113.69119999999998,
+          "width": 67.44,
+          "height": 15,
+          "fontName": "g_d0_f1",
+          "fontSize": 15
+        },
+        {
+          "text": "221 ",
+          "x": 366.5256,
+          "y": 162.9149,
+          "width": 23.340000000000032,
+          "height": 12,
+          "fontName": "g_d0_f2",
+          "fontSize": 12
+        },
+        {
+          "text": "Queen ",
+          "x": 389.8656000000001,
+          "y": 162.9149,
+          "width": 39.33600000000001,
+          "height": 12,
+          "fontName": "g_d0_f2",
+          "fontSize": 12
+        },
+        {
+          "text": "St",
+          "x": 429.2016000000002,
+          "y": 162.9149,
+          "width": 11.315999999999974,
+          "height": 12,
+          "fontName": "g_d0_f2",
+          "fontSize": 12
+        },
+        {
+          "text": "Melbourne ",
+          "x": 366.5256,
+          "y": 176.71370000000002,
+          "width": 60.012,
+          "height": 12,
+          "fontName": "g_d0_f2",
+          "fontSize": 12
+        },
+        {
+          "text": "VIC ",
+          "x": 426.5376000000001,
+          "y": 176.71370000000002,
+          "width": 23.30400000000003,
+          "height": 12,
+          "fontName": "g_d0_f2",
+          "fontSize": 12
+        },
+        {
+          "text": "3000",
+          "x": 449.84160000000014,
+          "y": 176.71370000000002,
+          "width": 26.687999999999988,
+          "height": 12,
+          "fontName": "g_d0_f2",
+          "fontSize": 12
+        },
+        {
+          "text": "$39.60",
+          "x": 416.8283,
+          "y": 238.01409999999998,
+          "width": 114.63749999999993,
+          "height": 37.5,
+          "fontName": "g_d0_f1",
+          "fontSize": 37.5
+        },
+        {
+          "text": "123 ",
+          "x": 22.579,
+          "y": 258.5101000000001,
+          "width": 29.880000000000003,
+          "height": 15,
+          "fontName": "g_d0_f3",
+          "fontSize": 15
+        },
+        {
+          "text": "Somewhere ",
+          "x": 52.459,
+          "y": 258.5101000000001,
+          "width": 95.02722599999998,
+          "height": 15,
+          "fontName": "g_d0_f3",
+          "fontSize": 15
+        },
+        {
+          "text": "St, ",
+          "x": 147.486226,
+          "y": 258.5101000000001,
+          "width": 24.389999999999986,
+          "height": 15,
+          "fontName": "g_d0_f3",
+          "fontSize": 15
+        },
+        {
+          "text": "Melbourne ",
+          "x": 171.87622599999997,
+          "y": 258.5101000000001,
+          "width": 89.03285099999994,
+          "height": 15,
+          "fontName": "g_d0_f3",
+          "fontSize": 15
+        },
+        {
+          "text": "VIC ",
+          "x": 260.90907699999997,
+          "y": 258.5101000000001,
+          "width": 32.625,
+          "height": 15,
+          "fontName": "g_d0_f3",
+          "fontSize": 15
+        },
+        {
+          "text": "3000",
+          "x": 293.534077,
+          "y": 258.5101000000001,
+          "width": 40.90499999999997,
+          "height": 15,
+          "fontName": "g_d0_f3",
+          "fontSize": 15
+        },
+        {
+          "text": "(03) ",
+          "x": 121.5732,
+          "y": 277.5531000000001,
+          "width": 37.05,
+          "height": 15,
+          "fontName": "g_d0_f3",
+          "fontSize": 15
+        },
+        {
+          "text": "1234 ",
+          "x": 158.62319999999997,
+          "y": 277.5531000000001,
+          "width": 39.61499999999998,
+          "height": 15,
+          "fontName": "g_d0_f3",
+          "fontSize": 15
+        },
+        {
+          "text": "5678",
+          "x": 198.23819999999998,
+          "y": 277.5531000000001,
+          "width": 37.140000000000015,
+          "height": 15,
+          "fontName": "g_d0_f3",
+          "fontSize": 15
+        }
+      ],
+      "boundingBoxes": [
+        {
+          "x1": 366.5256,
+          "y1": 113.69119999999998,
+          "x2": 416.4906,
+          "y2": 128.69119999999998
+        },
+        {
+          "x1": 416.49059999999986,
+          "y1": 113.69119999999998,
+          "x2": 483.93059999999986,
+          "y2": 128.69119999999998
+        },
+        {
+          "x1": 366.5256,
+          "y1": 162.9149,
+          "x2": 389.86560000000003,
+          "y2": 174.9149
+        },
+        {
+          "x1": 389.8656000000001,
+          "y1": 162.9149,
+          "x2": 429.2016000000001,
+          "y2": 174.9149
+        },
+        {
+          "x1": 429.2016000000002,
+          "y1": 162.9149,
+          "x2": 440.5176000000002,
+          "y2": 174.9149
+        },
+        {
+          "x1": 366.5256,
+          "y1": 176.71370000000002,
+          "x2": 426.5376,
+          "y2": 188.71370000000002
+        }
+      ]
+    }
+  ]
+}

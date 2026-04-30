@@ -1,0 +1,51 @@
+# Git and editor state
+.git/
+.github/
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Python build/test state
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+.venv/
+venv/
+
+# Node dependencies and local build output. Docker builds these in clean stages.
+node_modules/
+viewer/node_modules/
+viewer/dist/
+viewer/tsconfig.tsbuildinfo
+embed/node_modules/
+embed/dist/
+static/
+
+# Local secrets. Keep the checked-in templates.
+.env
+.env.*
+!.env.example
+!.env.production.example
+
+# Runtime and generated artifacts
+data/
+data-prod/
+output/
+.playwright-cli/
+.playwright-mcp/
+
+# Local branch/worktree snapshots that are not part of the deploy image.
+access-remedy-integration/
+access-remedy-livekit-agent/
+
+# Local handoff and investigation notes
+HANDOFF*.md
+AIDESIGNAGENT.md

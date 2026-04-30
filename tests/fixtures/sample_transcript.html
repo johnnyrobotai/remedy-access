@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Access Remedy A11y Fixture</title>
+  <style>
+/* Access Remedy viewer — WCAG 2.1 AA theme.
+   Colors chosen for >= 4.5:1 contrast on primary text and >= 3:1 on non-text. */
+
+:root {
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #555555;
+  --accent: #1a5dbf;    /* 5.6:1 on #ffffff */
+  --accent-on: #ffffff;
+  --border: #c7c7c7;
+  --surface: #f5f6f8;
+  --error: #b40011;     /* 5.8:1 on #ffffff */
+  --focus: #ffbf00;     /* 3:1 outline on #ffffff */
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  min-height: 3rem;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.toggle input[type="checkbox"] {
+  appearance: none;
+  width: 2.5rem;
+  height: 1.4rem;
+  background: var(--border);
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.toggle input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  border-radius: 999px;
+  transition: transform 120ms ease;
+}
+.toggle input[type="checkbox"]:checked {
+  background: var(--accent);
+}
+.toggle input[type="checkbox"]:checked::after {
+  transform: translateX(1.1rem);
+}
+.toggle-label.active {
+  font-weight: 600;
+}
+
+.topbar-spacer {
+  flex: 1;
+}
+.doc-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 40ch;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  flex: 1;
+  min-height: 0;
+}
+
+.pane {
+  overflow: auto;
+  padding: 1rem;
+  grid-column: 1;
+  grid-row: 1;
+}
+.pane.hidden-by-toggle {
+  display: none;
+}
+
+.drawer {
+  grid-column: 2;
+  grid-row: 1;
+  border-inline-start: 1px solid var(--border);
+  background: var(--surface);
+  overflow: auto;
+  padding: 0.5rem;
+}
+
+.tablist {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.75rem;
+}
+.tab {
+  background: transparent;
+  border: 0;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+.tab.active {
+  color: var(--fg);
+  border-bottom-color: var(--accent);
+}
+
+.outline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.outline-list li {
+  margin: 0.1rem 0;
+}
+.outline-list a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.pdf-pane canvas {
+  display: block;
+  margin: 0 auto 1rem;
+  max-width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.loading-msg {
+  color: var(--muted);
+  text-align: center;
+}
+
+.transcript-pane {
+  max-width: none;
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.transcript-pane > :not(.doc-page) {
+  max-width: 72ch;
+  margin: 0 auto;
+}
+.transcript-pane .doc-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(1rem, 2vw, 2rem);
+  background:
+    radial-gradient(circle at top right, rgba(26, 93, 191, 0.07), transparent 24rem),
+    linear-gradient(180deg, #ffffff, #fbfcfe);
+}
+.transcript-pane .doc-hero {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.transcript-pane .doc-hero__kicker {
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.transcript-pane .doc-hero__title {
+  margin: 0;
+  font-size: clamp(2.1rem, 4vw, 3.25rem);
+  line-height: 1.08;
+}
+.transcript-pane .doc-hero__subtitle,
+.transcript-pane .doc-hero__summary {
+  max-width: 72ch;
+  color: var(--muted);
+}
+.transcript-pane .doc-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin: 1rem 0 0;
+}
+.transcript-pane .doc-hero__meta > div {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid rgba(199, 199, 199, 0.8);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.86);
+}
+.transcript-pane .doc-hero__meta-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.transcript-pane .doc-hero__meta-value {
+  margin: 0;
+  font-weight: 600;
+}
+.transcript-pane .doc-lede {
+  max-width: 72ch;
+  margin-top: 1rem;
+  padding: 1rem 1.15rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 14px 14px 0;
+  background: rgba(26, 93, 191, 0.05);
+}
+.transcript-pane .doc-lede p {
+  margin: 0;
+}
+.transcript-pane .doc-page__toc {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.84);
+}
+.transcript-pane .doc-page__toc-title {
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.transcript-pane .doc-page__toc ol {
+  margin: 0;
+  padding-inline-start: 1.25rem;
+  display: grid;
+  gap: 0.35rem;
+}
+.transcript-pane .doc-page__body {
+  display: grid;
+  gap: 1.5rem;
+}
+.transcript-pane .doc-section {
+  padding: 1.2rem 1.4rem;
+  border: 1px solid rgba(199, 199, 199, 0.7);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.05);
+}
+.transcript-pane .doc-section > h2,
+.transcript-pane .doc-section > h3 {
+  margin-top: 0;
+}
+.transcript-pane .doc-section__header {
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+}
+.transcript-pane .doc-section__caption,
+.transcript-pane .doc-section__intro p {
+  margin: 0;
+  color: var(--muted);
+}
+.transcript-pane .doc-section__intro,
+.transcript-pane .doc-section__stack,
+.transcript-pane .doc-section__feature {
+  display: grid;
+  gap: 0.8rem;
+}
+.transcript-pane .doc-section__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.75fr) minmax(260px, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+.transcript-pane .doc-section__rail {
+  display: grid;
+  gap: 1rem;
+}
+.transcript-pane .doc-figure {
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.95rem;
+  border: 1px solid rgba(199, 199, 199, 0.8);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(245, 246, 248, 0.9), rgba(255, 255, 255, 0.95));
+}
+.transcript-pane .doc-figure figcaption {
+  font-size: 0.95rem;
+  color: var(--fg);
+  font-weight: 600;
+}
+.transcript-pane .doc-figure__description {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.transcript-pane .doc-page--scientific .doc-hero {
+  display: grid;
+  gap: 0.5rem;
+}
+.transcript-pane .doc-page--memo .doc-hero {
+  padding-left: 1rem;
+  border-left: 5px solid var(--accent);
+}
+.transcript-pane .doc-page--brochure .doc-hero {
+  padding: 1.4rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(26, 93, 191, 0.08), rgba(245, 246, 248, 0.88));
+}
+.transcript-pane .doc-page--article {
+  max-width: 1040px;
+  background:
+    radial-gradient(circle at top left, rgba(182, 96, 44, 0.08), transparent 24rem),
+    linear-gradient(180deg, #fffef9, #f8f5ee);
+}
+.transcript-pane .doc-page--article .doc-hero {
+  padding: 1.6rem 1.75rem;
+  border: 1px solid rgba(199, 199, 199, 0.75);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 251, 242, 0.98), rgba(255, 255, 255, 0.94));
+  box-shadow: 0 18px 36px rgba(68, 44, 17, 0.08);
+}
+.transcript-pane .doc-page--article .doc-hero__title {
+  max-width: 18ch;
+}
+.transcript-pane .doc-page--article .doc-page__toc {
+  border-radius: 20px;
+  background: rgba(255, 250, 241, 0.92);
+  box-shadow: 0 10px 22px rgba(68, 44, 17, 0.05);
+}
+.transcript-pane .doc-page--article .doc-section {
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 34px rgba(68, 44, 17, 0.06);
+}
+.transcript-pane .doc-page--article .doc-figure {
+  border-radius: 18px;
+}
+.transcript-pane .doc-page--reference .doc-section,
+.transcript-pane .doc-page--scientific .doc-section {
+  padding: 1.35rem 1.5rem;
+}
+.transcript-pane .doc-page--form {
+  max-width: 980px;
+  background:
+    linear-gradient(180deg, #fdfefe, #f4f8fb);
+}
+.transcript-pane .doc-page--form .doc-hero {
+  padding: 1rem 1.15rem 0.9rem;
+  border: 1px solid rgba(199, 199, 199, 0.75);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.95);
+}
+.transcript-pane .doc-page--form .doc-hero__title {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+.transcript-pane .doc-page--form .doc-page__body {
+  gap: 1rem;
+}
+.transcript-pane .doc-page--form .doc-section {
+  border-radius: 14px;
+  box-shadow: none;
+  background: #ffffff;
+}
+.transcript-pane .doc-page--form .doc-section__header {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(199, 199, 199, 0.65);
+}
+.transcript-pane .doc-page--form .doc-page__toc {
+  border-radius: 12px;
+}
+.transcript-pane .doc-page--form form,
+.transcript-pane .doc-page--form fieldset {
+  gap: 0.75rem;
+}
+.transcript-pane .doc-page--form input,
+.transcript-pane .doc-page--form textarea,
+.transcript-pane .doc-page--form select {
+  border-radius: 8px;
+  padding: 0.55em 0.7em;
+}
+.transcript-pane .doc-section--dense-reference table {
+  width: 100%;
+}
+.transcript-pane aside.callout,
+.transcript-pane .doc-section__rail > aside {
+  padding: 1rem 1.1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  background: rgba(26, 93, 191, 0.06);
+}
+.transcript-pane .doc-callout__title {
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+}
+.transcript-pane .doc-table {
+  overflow-x: auto;
+}
+.transcript-pane h1,
+.transcript-pane h2,
+.transcript-pane h3 {
+  line-height: 1.25;
+  margin-block: 1.5em 0.5em;
+}
+.transcript-pane table {
+  border-collapse: collapse;
+  margin-block: 1em;
+}
+.transcript-pane th,
+.transcript-pane td {
+  border: 1px solid var(--border);
+  padding: 0.3em 0.6em;
+  text-align: start;
+}
+.transcript-pane a {
+  color: var(--accent);
+}
+.transcript-pane input,
+.transcript-pane textarea,
+.transcript-pane select {
+  font: inherit;
+  padding: 0.4em 0.6em;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--fg);
+  border-radius: 4px;
+  width: 100%;
+  max-width: 100%;
+}
+.transcript-pane input[type="checkbox"],
+.transcript-pane input[type="radio"] {
+  width: auto;
+  margin-inline-end: 0.5em;
+}
+.transcript-pane form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-block: 1rem;
+}
+.transcript-pane .doc-form__intro {
+  margin: 0;
+  color: var(--muted);
+}
+.transcript-pane .doc-form__field,
+.transcript-pane .doc-form__group {
+  display: grid;
+  gap: 0.4rem;
+}
+.transcript-pane .doc-form__hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.transcript-pane .doc-form__choices {
+  display: grid;
+  gap: 0.55rem;
+}
+.transcript-pane .doc-form__choice {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.transcript-pane .doc-form__choice > label {
+  font-weight: 400;
+}
+/* Each <label>/<input> pair, commonly wrapped in a <p> by the model.
+   Force each field onto its own row with the label stacked above. */
+.transcript-pane form > p,
+.transcript-pane fieldset > p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0;
+}
+.transcript-pane form > p > label,
+.transcript-pane fieldset > p > label {
+  font-weight: 600;
+}
+/* Checkbox/radio rows: put the control before the label, inline. */
+.transcript-pane form > p:has(> input[type="checkbox"]),
+.transcript-pane form > p:has(> input[type="radio"]),
+.transcript-pane fieldset > p:has(> input[type="checkbox"]),
+.transcript-pane fieldset > p:has(> input[type="radio"]) {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+.transcript-pane form > p:has(> input[type="checkbox"]) > label,
+.transcript-pane form > p:has(> input[type="radio"]) > label,
+.transcript-pane fieldset > p:has(> input[type="checkbox"]) > label,
+.transcript-pane fieldset > p:has(> input[type="radio"]) > label {
+  font-weight: 400;
+}
+.transcript-pane fieldset {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem 1rem;
+  margin-block: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.transcript-pane fieldset > legend {
+  font-weight: 600;
+  padding-inline: 0.4rem;
+}
+.transcript-pane .doc-references,
+.transcript-pane .doc-footnotes {
+  margin-top: 1rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(199, 199, 199, 0.8);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+}
+.transcript-pane .doc-references__title,
+.transcript-pane .doc-footnotes__title {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.transcript-pane .doc-references__list,
+.transcript-pane .doc-footnotes ol {
+  margin: 0;
+  padding-inline-start: 1.25rem;
+  display: grid;
+  gap: 0.55rem;
+}
+.transcript-pane .sr-skip {
+  position: absolute;
+  left: -9999px;
+}
+.transcript-pane .sr-skip:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+  background: var(--accent);
+  color: var(--accent-on);
+  padding: 0.4rem 0.75rem;
+  z-index: 10;
+}
+
+.progress-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(10, 10, 10, 0.4);
+  z-index: 100;
+}
+.progress-card {
+  background: var(--bg);
+  color: var(--fg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  min-width: 320px;
+  max-width: 420px;
+}
+.progress-card h2 {
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+.progress-step {
+  font-weight: 600;
+  margin-block: 0.5rem 0.25rem;
+}
+.progress-msg {
+  margin: 0 0 0.75rem 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.progress-bar {
+  height: 8px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 200ms ease;
+}
+
+.error {
+  color: var(--error);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--error);
+  border-radius: 4px;
+  background: rgba(180, 0, 17, 0.05);
+  margin: 0.5rem 0;
+}
+
+.ask-panel textarea {
+  width: 100%;
+  font: inherit;
+  padding: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--fg);
+  margin-block: 0.25rem 0.5rem;
+}
+.ask-answer {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.ask-label {
+  font-weight: 600;
+}
+
+button {
+  background: var(--accent);
+  color: var(--accent-on);
+  border: 0;
+  padding: 0.5rem 0.9rem;
+  font: inherit;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.warning {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.empty-state {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.translate-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.translate-hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.translate-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.translate-controls label {
+  font-weight: 600;
+}
+.translate-controls select {
+  padding: 0.35rem 0.5rem;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.translate-error {
+  color: var(--text);
+  background: #5a1f1f;
+  border: 1px solid #7b2a2a;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.translate-reset {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+.translate-reset:hover:not([disabled]) {
+  background: var(--surface);
+}
+
+/* Outline-click feedback: paints the target heading with the accent colour
+   briefly, then fades. Uses background + outline ring so the highlight is
+   visible without relying on color alone (WCAG 1.4.1 Use of Color). */
+.ar-outline-flash {
+  animation: ar-outline-flash 2.4s ease-out 1;
+  border-radius: 4px;
+  scroll-margin-top: 1rem;
+}
+@keyframes ar-outline-flash {
+  0%, 40% {
+    background: color-mix(in srgb, var(--accent) 55%, transparent);
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+  }
+  100% {
+    background: transparent;
+    outline: 3px solid transparent;
+    outline-offset: 4px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ar-outline-flash {
+    animation-duration: 0.01s;
+  }
+}
+@media (max-width: 900px) {
+  .transcript-pane .doc-section__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="transcript-pane"><main id="content" lang="en" class="doc-page doc-page--reference doc-page--density-comfortable"><a href="#content" class="sr-skip">Skip to main content</a><header class="doc-hero doc-hero--compact"><h1 id="document-title" class="doc-hero__title">Access Remedy A11y Fixture</h1><p class="doc-hero__subtitle">Representative transcript fixture</p><p class="doc-hero__summary">Static transcript fixture for browser-based axe validation.</p><div class="doc-lede"><p>This fixture exercises headings, callouts, figures, tables, forms, references, and footnotes.</p></div></header><nav class="doc-page__toc" aria-labelledby="doc-toc-title"><p id="doc-toc-title" class="doc-page__toc-title">On this page</p><ol><li class="doc-page__toc-item doc-page__toc-item--level-2"><a href="#overview">Overview</a></li><li class="doc-page__toc-item doc-page__toc-item--level-2"><a href="#services">Services</a></li><li class="doc-page__toc-item doc-page__toc-item--level-2"><a href="#contact">Contact Form</a></li></ol></nav><div class="doc-page__body"><section id="overview" class="doc-section doc-section--split-figure-right"><header class="doc-section__header"><h2 id="overview">Overview</h2></header><div class="doc-section__grid"><div class="doc-section__main"><p>The accessible route remains step-free from the curb cut to the visitor plaza.</p></div><aside class="doc-section__rail" aria-label="Supporting content"><aside class="callout doc-callout" aria-label="Note"><p class="doc-callout__title">Note</p><p>Borrow a beach wheelchair at the information desk.</p></aside><figure class="doc-figure doc-figure--text-only"><figcaption>Boardwalk entrance with ramp and tactile edge strip.</figcaption><p class="doc-figure__description">Ramped boardwalk entrance seen from the parking lot.</p></figure></aside></div></section><section id="services" class="doc-section doc-section--dense-reference"><header class="doc-section__header"><h2 id="services">Services</h2></header><div class="doc-section__stack"><div class="doc-table"><table><caption>Visitor services by location</caption><thead><tr><th scope="col">Location</th><th scope="col">Service</th><th scope="col">Hours</th></tr></thead><tbody><tr><th scope="row">Entry kiosk</th><td>Maps and tactile guides</td><td>8 AM to 6 PM</td></tr><tr><th scope="row">Visitor center</th><td>Restrooms and loaner chairs</td><td>9 AM to 5 PM</td></tr></tbody></table></div></div></section><section id="contact" class="doc-section doc-section--single-column"><header class="doc-section__header"><h2 id="contact">Contact Form</h2></header><div class="doc-section__stack"><form class="doc-form"><p class="doc-form__intro">Share access feedback with the visitor services team.</p><div class="doc-form__field"><label for="name">Name</label><input type="text" id="name" /></div><div class="doc-form__field"><label for="email">Email</label><input type="email" id="email" /></div><fieldset class="doc-form__group"><legend>Preferred contact method</legend><div class="doc-form__choices"><div class="doc-form__choice"><input id="contact-method-email" type="radio" name="contact-method" value="email" /><label for="contact-method-email">Email</label></div><div class="doc-form__choice"><input id="contact-method-phone" type="radio" name="contact-method" value="phone" /><label for="contact-method-phone">Phone</label></div></div></fieldset></form></div></section><section class="doc-references" aria-labelledby="references-label"><p id="references-label" class="doc-references__title">References</p><ol class="doc-references__list"><li>City Coastal Access Plan, 2026 update.</li><li>Visitor Services Operations Manual, section 4.</li></ol></section><aside class="footnotes doc-footnotes" aria-labelledby="doc-footnotes-label"><p id="doc-footnotes-label" class="doc-footnotes__title">Footnotes</p><ol><li id="fn-parking-note">Accessible parking is first come, first served. <a href="#document-title" aria-label="Return from footnote 1">Return</a></li></ol></aside></div></main></div>
+</body>
+</html>

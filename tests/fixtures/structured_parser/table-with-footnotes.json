@@ -1,0 +1,115 @@
+{
+  "schema_version": "structured-render-v2",
+  "source_format": "pdf",
+  "title": "Benefits Enrollment Rates",
+  "summary": "Reference table of employee contribution rates with table footnotes preserved as explicit footnote entries.",
+  "language": "en",
+  "page_count": 2,
+  "doc_kind": "reference_doc",
+  "body": [
+    {
+      "id": "current-rates",
+      "type": "section",
+      "heading": "Current Rates",
+      "level": 2,
+      "caption": "Monthly employee contribution rates for plan year 2026.",
+      "page_start": 2,
+      "page_end": 2,
+      "placement": "inline",
+      "blocks": [
+        {
+          "id": "annual-rates-table",
+          "type": "table",
+          "caption": "2026 employee contribution rates",
+          "page_start": 2,
+          "page_end": 2,
+          "placement": "inline",
+          "header_rows": [
+            {
+              "cells": [
+                {
+                  "text": "Coverage Tier",
+                  "kind": "header",
+                  "scope": "col"
+                },
+                {
+                  "text": "Monthly Premium",
+                  "kind": "header",
+                  "scope": "col"
+                },
+                {
+                  "text": "Notes",
+                  "kind": "header",
+                  "scope": "col"
+                }
+              ]
+            }
+          ],
+          "body_rows": [
+            {
+              "cells": [
+                {
+                  "text": "Employee Only",
+                  "kind": "header",
+                  "scope": "row"
+                },
+                {
+                  "text": "$118",
+                  "kind": "data"
+                },
+                {
+                  "text": "Base medical plan.",
+                  "kind": "data",
+                  "footnote_refs": [
+                    "rate-baseline"
+                  ]
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "text": "Employee + Family",
+                  "kind": "header",
+                  "scope": "row"
+                },
+                {
+                  "text": "$342",
+                  "kind": "data"
+                },
+                {
+                  "text": "Includes dependent surcharge in Zone B.",
+                  "kind": "data",
+                  "footnote_refs": [
+                    "zone-b-surcharge"
+                  ]
+                }
+              ]
+            }
+          ],
+          "footer_rows": []
+        }
+      ]
+    },
+    {
+      "id": "rate-footnotes",
+      "type": "footnotes",
+      "title": "Table Notes",
+      "page_start": 2,
+      "page_end": 2,
+      "placement": "footer",
+      "entries": [
+        {
+          "id": "rate-baseline",
+          "label": "a",
+          "text": "Base medical plan rates apply to employees in the standard contribution band."
+        },
+        {
+          "id": "zone-b-surcharge",
+          "label": "b",
+          "text": "Zone B adds a dependent surcharge when covered dependents live outside the primary service region."
+        }
+      ]
+    }
+  ]
+}

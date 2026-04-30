@@ -1,0 +1,230 @@
+{
+  "pages": [
+    {
+      "page": 1,
+      "width": 612,
+      "height": 792,
+      "text": "Design and build\naccessible PDF tables\nSample tables\n\n\nTable 1\n\nColumn header (TH)   Column header (TH)   Column header (TH)\nRow header (TH)      Data cell (TD)       Data cell (TD)\nRow header(TH)       Data cell (TD)       Data cell (TD)\n\n\nTable 2: example of footnotes referenced from within a table\n\nExpenditure by function £ million          2009/10  2010/11¹\n\nPolicy functions        Financial            22.5    30.57\n                        Information     2    10.2     14.8\n                        Contingency          2.6      1.2\nRemunerated functions   Agency services 3    44.7    35.91\n                        Payments            22.41    19.88\n                        Banking             22.90    44.23\n                        Other               12.69    10.32\n\n(1) Provisional total as of publication date.\n(2) Costs associated with on-going information programmes.\n(3) From the management accounts, net of recoveries, including interest charges.\n\n\nTable 3: \"film credits\" style layout\n\n                    Main character  Daniel Radcliffe\n                        Sidekick 1  Rupert Grint\n                        Sidekick 2  Emma Watson\n                      Lovable ogre  Robbie Coltrane\n                         Professor  Maggie Smith\n                        Headmaster  Richard Harris",
+      "textItems": [
+        {
+          "text": "Design ",
+          "x": 90,
+          "y": 84.12000000000002,
+          "width": 83.63628,
+          "height": 19.980000000000004,
+          "fontName": "g_d0_f1",
+          "fontSize": 19.98
+        },
+        {
+          "text": "and ",
+          "x": 173.63628,
+          "y": 84.12000000000002,
+          "width": 48.431520000000006,
+          "height": 19.980000000000004,
+          "fontName": "g_d0_f1",
+          "fontSize": 19.98
+        },
+        {
+          "text": "build",
+          "x": 222.06780000000003,
+          "y": 84.12000000000002,
+          "width": 55.90404000000001,
+          "height": 19.980000000000004,
+          "fontName": "g_d0_f1",
+          "fontSize": 19.98
+        },
+        {
+          "text": "accessible ",
+          "x": 90,
+          "y": 108.41567999999997,
+          "width": 121.63824,
+          "height": 19.980000000000004,
+          "fontName": "g_d0_f1",
+          "fontSize": 19.98
+        },
+        {
+          "text": "PDF ",
+          "x": 211.63824,
+          "y": 108.41567999999997,
+          "width": 51.12882000000002,
+          "height": 19.980000000000004,
+          "fontName": "g_d0_f1",
+          "fontSize": 19.98
+        },
+        {
+          "text": "tables",
+          "x": 262.76706,
+          "y": 108.41567999999997,
+          "width": 68.37155999999999,
+          "height": 19.980000000000004,
+          "fontName": "g_d0_f1",
+          "fontSize": 19.98
+        },
+        {
+          "text": "Sample ",
+          "x": 90,
+          "y": 135.65999999999994,
+          "width": 71.70552,
+          "height": 16.02000000000001,
+          "fontName": "g_d0_f1",
+          "fontSize": 16.02
+        },
+        {
+          "text": "tables",
+          "x": 161.70552,
+          "y": 135.65999999999994,
+          "width": 54.74034000000003,
+          "height": 16.02000000000001,
+          "fontName": "g_d0_f1",
+          "fontSize": 16.02
+        },
+        {
+          "text": "Table ",
+          "x": 90,
+          "y": 182.46000000000006,
+          "width": 37.37592000000001,
+          "height": 10.97999999999999,
+          "fontName": "g_d0_f1",
+          "fontSize": 10.98
+        },
+        {
+          "text": "1",
+          "x": 127.37592000000001,
+          "y": 182.46000000000006,
+          "width": 7.806780000000003,
+          "height": 10.97999999999999,
+          "fontName": "g_d0_f1",
+          "fontSize": 10.98
+        },
+        {
+          "text": "Column ",
+          "x": 90,
+          "y": 203.69999999999996,
+          "width": 50.376239999999996,
+          "height": 10.97999999999999,
+          "fontName": "g_d0_f1",
+          "fontSize": 10.98
+        },
+        {
+          "text": "header ",
+          "x": 140.37624,
+          "y": 203.69999999999996,
+          "width": 46.703760000000045,
+          "height": 10.97999999999999,
+          "fontName": "g_d0_f1",
+          "fontSize": 10.98
+        },
+        {
+          "text": "(TH)",
+          "x": 187.08,
+          "y": 203.69999999999996,
+          "width": 28.63584,
+          "height": 10.97999999999999,
+          "fontName": "g_d0_f1",
+          "fontSize": 10.98
+        },
+        {
+          "text": "Column ",
+          "x": 237.6,
+          "y": 203.69999999999996,
+          "width": 50.38541999999998,
+          "height": 10.97999999999999,
+          "fontName": "g_d0_f1",
+          "fontSize": 10.98
+        },
+        {
+          "text": "header ",
+          "x": 287.9854200000001,
+          "y": 203.69999999999996,
+          "width": 46.69457999999986,
+          "height": 10.97999999999999,
+          "fontName": "g_d0_f1",
+          "fontSize": 10.98
+        },
+        {
+          "text": "(TH)",
+          "x": 334.68,
+          "y": 203.69999999999996,
+          "width": 28.635839999999973,
+          "height": 10.97999999999999,
+          "fontName": "g_d0_f1",
+          "fontSize": 10.98
+        },
+        {
+          "text": "Column ",
+          "x": 385.2,
+          "y": 203.69999999999996,
+          "width": 50.376239999999996,
+          "height": 10.97999999999999,
+          "fontName": "g_d0_f1",
+          "fontSize": 10.98
+        },
+        {
+          "text": "header ",
+          "x": 435.57624000000004,
+          "y": 203.69999999999996,
+          "width": 46.703759999999875,
+          "height": 10.97999999999999,
+          "fontName": "g_d0_f1",
+          "fontSize": 10.98
+        },
+        {
+          "text": "(TH)",
+          "x": 482.28,
+          "y": 203.69999999999996,
+          "width": 28.63584000000003,
+          "height": 10.97999999999999,
+          "fontName": "g_d0_f1",
+          "fontSize": 10.98
+        },
+        {
+          "text": "Row ",
+          "x": 90,
+          "y": 220.67999999999998,
+          "width": 30.70008,
+          "height": 10.97999999999999,
+          "fontName": "g_d0_f1",
+          "fontSize": 10.98
+        }
+      ],
+      "boundingBoxes": [
+        {
+          "x1": 90,
+          "y1": 84.12000000000002,
+          "x2": 173.63628,
+          "y2": 104.10000000000002
+        },
+        {
+          "x1": 173.63628,
+          "y1": 84.12000000000002,
+          "x2": 222.0678,
+          "y2": 104.10000000000002
+        },
+        {
+          "x1": 222.06780000000003,
+          "y1": 84.12000000000002,
+          "x2": 277.97184000000004,
+          "y2": 104.10000000000002
+        },
+        {
+          "x1": 90,
+          "y1": 108.41567999999997,
+          "x2": 211.63824,
+          "y2": 128.39567999999997
+        },
+        {
+          "x1": 211.63824,
+          "y1": 108.41567999999997,
+          "x2": 262.76706,
+          "y2": 128.39567999999997
+        },
+        {
+          "x1": 262.76706,
+          "y1": 108.41567999999997,
+          "x2": 331.13862,
+          "y2": 128.39567999999997
+        }
+      ]
+    }
+  ]
+}

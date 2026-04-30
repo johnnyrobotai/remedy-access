@@ -1,0 +1,39 @@
+{$PUBLIC_HOST} {
+	encode zstd gzip
+
+	log {
+		output stdout
+		format console
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "geolocation=(), camera=(), payment=()"
+		-Server
+	}
+
+	request_body {
+		max_size {$MAX_REQUEST_BODY_SIZE:60MB}
+	}
+
+	@blocked_docs path /docs* /redoc* /openapi.json
+	respond @blocked_docs 404
+
+	# Private staging mode:
+	# 1. Generate a hash:
+	#      docker run --rm caddy:2.8-alpine caddy hash-password --plaintext 'replace-me'
+	# 2. Set BASIC_AUTH_USER and BASIC_AUTH_HASH in .env.production.
+	# 3. Uncomment this block.
+	#
+	# basicauth {
+	# 	{$BASIC_AUTH_USER} {$BASIC_AUTH_HASH}
+	# }
+
+	reverse_proxy api:8000 {
+		header_up X-Forwarded-Proto {scheme}
+		header_up X-Forwarded-Host {host}
+		header_up X-Real-IP {remote_host}
+	}
+}

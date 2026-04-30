@@ -1,0 +1,114 @@
+{
+  "schema_version": "structured-render-v2",
+  "source_format": "docx",
+  "title": "Volunteer Registration Packet",
+  "summary": "DOCX form with grouped controls represented as a structured form group and ordered field specs.",
+  "language": "en",
+  "page_count": 1,
+  "doc_kind": "form_doc",
+  "body": [
+    {
+      "id": "contact-preferences-section",
+      "type": "section",
+      "heading": "Contact Preferences",
+      "level": 2,
+      "caption": "Choose how the coordinator should follow up after the orientation review.",
+      "page_start": 1,
+      "page_end": 1,
+      "placement": "inline",
+      "blocks": [
+        {
+          "id": "contact-preferences-group",
+          "type": "form_group",
+          "legend": "Preferred Follow-up",
+          "caption": "Grouped controls from the paper packet stay together in the rendered form.",
+          "page_start": 1,
+          "page_end": 1,
+          "placement": "inline",
+          "fields": [
+            {
+              "id": "preferred-channel",
+              "label": "Preferred Channel",
+              "control": "radio",
+              "name": "preferred-channel",
+              "required": true,
+              "options": [
+                {
+                  "id": "preferred-channel-email",
+                  "label": "Email",
+                  "value": "email",
+                  "selected": false
+                },
+                {
+                  "id": "preferred-channel-text",
+                  "label": "Text Message",
+                  "value": "text",
+                  "selected": false
+                },
+                {
+                  "id": "preferred-channel-call",
+                  "label": "Phone Call",
+                  "value": "call",
+                  "selected": false
+                }
+              ]
+            },
+            {
+              "id": "activity-interests",
+              "label": "Activity Interests",
+              "control": "checkbox",
+              "name": "activity-interests",
+              "options": [
+                {
+                  "id": "activity-interests-tutoring",
+                  "label": "Tutoring",
+                  "value": "tutoring",
+                  "selected": false
+                },
+                {
+                  "id": "activity-interests-outreach",
+                  "label": "Outreach Events",
+                  "value": "outreach",
+                  "selected": false
+                }
+              ]
+            },
+            {
+              "id": "availability-window",
+              "label": "Availability Window",
+              "control": "select",
+              "name": "availability-window",
+              "options": [
+                {
+                  "id": "availability-window-weekdays",
+                  "label": "Weekdays",
+                  "value": "weekdays",
+                  "selected": false
+                },
+                {
+                  "id": "availability-window-evenings",
+                  "label": "Evenings",
+                  "value": "evenings",
+                  "selected": false
+                },
+                {
+                  "id": "availability-window-weekends",
+                  "label": "Weekends",
+                  "value": "weekends",
+                  "selected": false
+                }
+              ]
+            },
+            {
+              "id": "contact-notes",
+              "label": "Contact Notes",
+              "control": "textarea",
+              "help_text": "Share any access needs or scheduling constraints.",
+              "required": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

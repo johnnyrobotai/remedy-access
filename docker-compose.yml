@@ -1,0 +1,23 @@
+services:
+  api:
+    build: .
+    ports:
+      - "1337:1337"
+    env_file:
+      - .env
+    environment:
+      PORT: "1337"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+
+  # Uncomment once LiveKit + GOOGLE_API_KEY are configured.
+  # agent:
+  #   build:
+  #     context: .
+  #     dockerfile: agent/Dockerfile
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - api
+  #   restart: unless-stopped

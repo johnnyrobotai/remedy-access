@@ -1,0 +1,53 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: access-remedy
+  annotations:
+    run.googleapis.com/ingress: all
+    run.googleapis.com/launch-stage: GA
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "5"
+        run.googleapis.com/execution-environment: gen2
+    spec:
+      containerConcurrency: 20
+      timeoutSeconds: 300
+      containers:
+        - image: us-central1-docker.pkg.dev/PROJECT_ID/access-remedy/api:latest
+          ports:
+            - containerPort: 8000
+          resources:
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          env:
+            - name: PUBLIC_ORIGIN
+              value: https://access.project-remedy.com
+            - name: DATA_DIR
+              value: /app/data
+            - name: GOOGLE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: GOOGLE_API_KEY
+                  key: latest
+            - name: LIVEKIT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: LIVEKIT_URL
+                  key: latest
+                  optional: true
+            - name: LIVEKIT_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: LIVEKIT_API_KEY
+                  key: latest
+                  optional: true
+            - name: LIVEKIT_API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: LIVEKIT_API_SECRET
+                  key: latest
+                  optional: true

@@ -1,0 +1,98 @@
+{
+  "schema_version": "structured-render-v2",
+  "source_format": "pdf",
+  "title": "Bridge Safety Memo",
+  "kicker": "City Engineering Division",
+  "subtitle": "West Span Inspection",
+  "summary": "Field memo describing opening inspection context, observed risks, and immediate actions for the west span.",
+  "language": "en-US",
+  "page_count": 2,
+  "doc_kind": "memo",
+  "body": [
+    {
+      "id": "opening-overview",
+      "type": "paragraph",
+      "text": "The west span inspection was completed on April 14 after the overnight closure and before temporary barriers were removed.",
+      "page_start": 1,
+      "page_end": 1,
+      "placement": "lead"
+    },
+    {
+      "id": "opening-purpose",
+      "type": "paragraph",
+      "text": "This memo records the initial findings that require repair scheduling before the next forecasted storm.",
+      "page_start": 1,
+      "page_end": 1,
+      "placement": "lead"
+    },
+    {
+      "id": "inspection-findings",
+      "type": "section",
+      "heading": "Inspection Findings",
+      "level": 2,
+      "caption": "Observed conditions in document reading order.",
+      "page_start": 1,
+      "page_end": 2,
+      "placement": "inline",
+      "blocks": [
+        {
+          "id": "finding-summary",
+          "type": "paragraph",
+          "text": "Crews observed water intrusion at two joints and a visible alignment shift near the west railing anchors.",
+          "page_start": 1,
+          "page_end": 1,
+          "placement": "inline"
+        },
+        {
+          "id": "notable-risks",
+          "type": "list",
+          "list_style": "unordered",
+          "page_start": 2,
+          "page_end": 2,
+          "placement": "inline",
+          "items": [
+            {
+              "text": "Loose railing anchors on the west span."
+            },
+            {
+              "text": "Drainage debris blocking two scuppers."
+            }
+          ]
+        },
+        {
+          "id": "repair-window",
+          "type": "callout",
+          "tone": "important",
+          "title": "Immediate Action",
+          "body": [
+            "Schedule temporary lane control before the next rain event and keep the west shoulder closed until the anchor plates are reset."
+          ],
+          "page_start": 2,
+          "page_end": 2,
+          "placement": "after"
+        }
+      ]
+    },
+    {
+      "id": "witness-statement",
+      "type": "section",
+      "heading": "Witness Statement",
+      "level": 2,
+      "page_start": 2,
+      "page_end": 2,
+      "placement": "inline",
+      "blocks": [
+        {
+          "id": "site-supervisor-quote",
+          "type": "quote",
+          "text": "The anchor movement was visible as soon as the barriers came off, so we paused reopening and held traffic at the west approach.",
+          "attribution": "Dana Liu, Site Supervisor",
+          "citation": "April 14 field interview",
+          "page_start": 2,
+          "page_end": 2,
+          "placement": "inline"
+        }
+      ]
+    }
+  ]
+}

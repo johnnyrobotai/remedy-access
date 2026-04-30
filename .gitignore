@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+dist/
+build/
+
+# Node
+node_modules/
+viewer/dist/
+embed/dist/
+static/viewer/
+static/embed/
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.production.example
+.env.local
+*.env.local
+firebase-service-account*.json
+
+# Data (cache + pdfs + images are runtime, not source)
+data-prod/
+data/cache.db
+data/cache.db-journal
+data/pdfs/*.pdf
+data/pdfs/*.docx
+data/pdfs/*.xlsx
+!data/pdfs/.gitkeep
+data/images/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Debug artifacts (PNGs at repo root only — viewer/, demo/, data/images/ PNGs are tracked elsewhere)
+/*.png
+.playwright-mcp/
+
+# Ignore internal markdown (handoffs, AI docs); keep README
+*.md
+!README.md
+
+# Screenshots / demo recordings — not part of source
+screenshots/

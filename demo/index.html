@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Remedy Access Demo — Click a document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Live demo of Remedy Access: drop a script tag on any page and every PDF, Word, or Excel link becomes a WCAG 2.1 AA accessible transcript in a browser overlay."
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260429" />
+    <script async src="/docbox.js?v=20260428"></script>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header role="banner" class="site-header">
+      <div class="wrap">
+        <h1>Remedy Access</h1>
+        <p class="tagline">
+          One script tag turns every PDF on your site into a WCAG 2.1 AA
+          accessible transcript.
+        </p>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <section aria-labelledby="how-it-works">
+        <h2 id="how-it-works">How the demo works</h2>
+        <p>
+          Each link below is a regular <code>&lt;a href="*.pdf"&gt;</code>,
+          <code>&lt;a href="*.docx"&gt;</code>, or
+          <code>&lt;a href="*.xlsx"&gt;</code>. When you click one, the
+          embedded <code>docbox.js</code> script opens an overlay that
+          renders the original document on one side and a live
+          AI-generated, WCAG 2.1 AA–compliant HTML transcript on the other
+          — with a top-left toggle, an outline, an Ask-a-Question panel
+          grounded in the document, and an optional voice assistant.
+        </p>
+        <p>
+          Spreadsheets that look like calculators (e.g. the GPA calculator
+          below) come back as working HTML forms: the LLM transpiles the
+          Excel formulas into vanilla JavaScript so you can type into the
+          inputs and watch the result recompute live.
+        </p>
+        <p class="note">
+          This demo deliberately does <strong>not</strong> pre-cache
+          transcripts so you can watch the pipeline run. Subsequent clicks
+          are instant cache hits. Production deployments run
+          <code>scripts/crawl.py</code> to pre-convert every PDF on your
+          site.
+        </p>
+      </section>
+
+      <section aria-labelledby="spreadsheets">
+        <h2 id="spreadsheets">Interactive Spreadsheet Sample</h2>
+        <ul class="doc-grid">
+          <li>
+            <a href="/demo/pdfs/GPA_Calculator.xlsx">GPA calculator (.xlsx)</a>
+            <p>Calculator-shaped workbook: grades and credits feed a weighted-average formula. The transcript should come back as a working HTML form.</p>
+            <p>
+              <a href="/demo/pdfs/GPA_Calculator.xlsx" download data-docbox-ignore="1">Download original spreadsheet</a>
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="docs">
+        <h2 id="docs">LACCD Student Forms</h2>
+        <p class="note">
+          These are the documents linked from the LACCD Student Forms page.
+          The labels below match the source page, and the files are served
+          from <code>demo/pdfs/</code> for deterministic local testing.
+        </p>
+        <p class="note" id="doc-empty-state" hidden>
+          No LACCD demo documents are installed in this checkout right now.
+          Run <code>scripts/download_samples.sh</code> or download the
+          Student Forms inventory before testing the demo gallery.
+        </p>
+        <ul class="doc-grid" id="laccd-doc-grid">
+          <li>
+            <a href="/demo/pdfs/Nonresident_Tuition_Exemption_Request.pdf">AB 540 California Nonresident Tuition Exemption Request</a>
+            <p>Static residency exemption request with checkbox groups and certification areas.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/Nonresident_Tuition_Fee_Waiver_Application.docx">Nonresident Tuition Fee Waiver (Word Version)</a>
+            <p>DOCX version of the fee waiver form.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/Nonresident_Tuition_Fee_Waiver_Application.pdf">Nonresident Tuition Fee Waiver (PDF Version)</a>
+            <p>Fillable PDF form with grouped fields and an income table.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/Supplemental_Residency_Questionnaire.pdf">Supplemental Residency Questionnaire</a>
+            <p>Long fillable questionnaire with many residency fields.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/Certification_of_Homeless_Status_REV_012018.docx">Certification of Homeless Status (Word Version)</a>
+            <p>DOCX certification form.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/Certification_of_Homeless_Status_REV_012018.pdf">Certification of Homeless Status (PDF Version)</a>
+            <p>Two-page certification PDF with student, agency, and signature fields.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/APPLICATION_FOR_NONCREDIT_ADMISSION_2.6_Fillable.pdf">Application for Noncredit Admission</a>
+            <p>Large fillable admission form with applicant, enrollment, and office-use fields.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/APPLICATION_FOR_NONCREDIT_ADMISSION_2.7_Fillable_SPANISH.pdf">Application for Noncredit Admission (Spanish)</a>
+            <p>Spanish fillable admission form.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/pass_no_pass_petition.pdf">Pass No Pass Petition (PDF version)</a>
+            <p>Petition-style fillable form with course rows and office-use fields.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/High_School_Graduation_Update_Form.pdf">High School Graduation Update Form</a>
+            <p>Fillable update form with personal, school, and signature fields.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/laccd_ew_petition_240209_0.pdf">Excused Withdrawal (EW) Petition</a>
+            <p>Petition form with repeated course fields and certification text.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/K-12_Parent_Consent.pdf">K-12 Parent Consent Form</a>
+            <p>Static parent consent form with student and parent sections.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/LACCD_Petition_for_Academic_Renewal_250505.pdf">LACCD Petition for Academic Renewal.pdf</a>
+            <p>Multi-page fillable petition with course rows and administrative fields.</p>
+          </li>
+          <li>
+            <a href="/demo/pdfs/Petition_for_Credit_for_Prior_Learning_v7.pdf">Petition for Credit for Prior Learning</a>
+            <p>Course equivalency petition with form fields and real data tables.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="embed">
+        <h2 id="embed">Add it to your own site</h2>
+        <pre><code>&lt;script async src="https://access.project-remedy.com/docbox.js"&gt;&lt;/script&gt;</code></pre>
+        <p>
+          That's it. Every existing PDF link keeps working for users who
+          want the native PDF; anyone who needs an accessible transcript
+          gets one on click.
+        </p>
+      </section>
+    </main>
+
+    <footer role="contentinfo" class="site-footer">
+      <div class="wrap">
+        <p>
+          Open source on
+          <a href="https://github.com/johnnyrobot/access-remedy">GitHub</a> ·
+          MIT licensed
+        </p>
+      </div>
+    </footer>
+    <script>
+      (async () => {
+        const grid = document.getElementById("laccd-doc-grid");
+        const empty = document.getElementById("doc-empty-state");
+        if (!grid || !empty) return;
+
+        const items = Array.from(grid.querySelectorAll(":scope > li"));
+        let visibleCount = 0;
+
+        for (const item of items) {
+          const link = item.querySelector("a[href$='.pdf'], a[href$='.docx']");
+          if (!(link instanceof HTMLAnchorElement)) continue;
+          try {
+            const href = new URL(link.href);
+            href.username = "";
+            href.password = "";
+            const resp = await fetch(href.href, { method: "HEAD" });
+            if (!resp.ok) {
+              item.hidden = true;
+              continue;
+            }
+          } catch {
+            item.hidden = true;
+            continue;
+          }
+          visibleCount += 1;
+        }
+
+        empty.hidden = visibleCount !== 0;
+        grid.hidden = visibleCount === 0;
+      })();
+    </script>
+  </body>
+</html>

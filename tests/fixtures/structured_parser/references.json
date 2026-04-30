@@ -1,0 +1,62 @@
+{
+  "schema_version": "structured-render-v2",
+  "source_format": "pdf",
+  "title": "River Sampling Protocol",
+  "summary": "Protocol excerpt with inline method notes and an ordered references block for downstream rendering.",
+  "language": "en",
+  "page_count": 6,
+  "doc_kind": "scientific_article",
+  "body": [
+    {
+      "id": "method-notes",
+      "type": "section",
+      "heading": "Method Notes",
+      "level": 2,
+      "page_start": 5,
+      "page_end": 5,
+      "placement": "inline",
+      "blocks": [
+        {
+          "id": "method-summary",
+          "type": "paragraph",
+          "text": "Collect samples upstream first, then proceed downstream so the operator does not disturb the later measurement sites.",
+          "page_start": 5,
+          "page_end": 5,
+          "placement": "inline"
+        },
+        {
+          "id": "lab-director-quote",
+          "type": "quote",
+          "text": "Sampling order matters more than speed because the protocol assumes the downstream site remains undisturbed until the end of the run.",
+          "attribution": "M. Ortega, Field Lab Director",
+          "citation": "Protocol briefing, March 2026",
+          "page_start": 5,
+          "page_end": 5,
+          "placement": "after"
+        }
+      ]
+    },
+    {
+      "id": "source-references",
+      "type": "reference_list",
+      "title": "References",
+      "list_style": "ordered",
+      "page_start": 6,
+      "page_end": 6,
+      "placement": "footer",
+      "entries": [
+        {
+          "id": "ref-one",
+          "label": "[1]",
+          "text": "U.S. Geological Survey. National Field Manual for the Collection of Water-Quality Data. 2023."
+        },
+        {
+          "id": "ref-two",
+          "label": "[2]",
+          "text": "World Health Organization. Guidelines for Drinking-water Quality. Fourth edition, 2022.",
+          "href": "https://www.who.int/publications/i/item/9789240045064"
+        }
+      ]
+    }
+  ]
+}
