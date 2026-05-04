@@ -6,6 +6,7 @@ import re
 from pathlib import Path
 
 import openpyxl
+import pytest
 from bs4 import BeautifulSoup
 from fastapi.testclient import TestClient
 
@@ -736,6 +737,9 @@ def test_laccd_docx_form_uses_pdf_style_facsimile_renderer() -> None:
     import asyncio
 
     docx_path = Path(__file__).resolve().parents[1] / "demo" / "pdfs" / "Nonresident_Tuition_Fee_Waiver_Application.docx"
+    if not docx_path.exists():
+        pytest.skip("demo DOCX fixture not present; run scripts/download_samples.sh")
+
     result = asyncio.run(
         run_structured_render_v2(
             docx_path.read_bytes(),
@@ -875,7 +879,9 @@ def _render_demo_laccd_pdf(filename: str):
     import asyncio
 
     pdf_path = Path(__file__).resolve().parents[1] / "demo" / "pdfs" / filename
-    assert pdf_path.exists(), f"missing LACCD demo PDF fixture: {pdf_path}"
+    if not pdf_path.exists():
+        pytest.skip(f"demo PDF fixture not present: {filename}; run scripts/download_samples.sh")
+
     return asyncio.run(
         run_structured_render_v2(
             pdf_path.read_bytes(),

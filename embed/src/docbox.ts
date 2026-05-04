@@ -36,7 +36,7 @@ function attachClickHandler(): CleanupFn {
     // Respect modifier keys so users can still open in a new tab.
     if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     if (e.button !== 0) return;
-    const target = (e.target as Element | null)?.closest("a");
+    const target = e.target instanceof Element ? e.target.closest("a") : null;
     if (!isDocAnchor(target)) return;
     e.preventDefault();
     openOverlay(target.href);

@@ -30,10 +30,12 @@ services:
     image: access-remedy-api:latest
     restart: unless-stopped
     env_file:
-      - .env.production
+      - path: .env.production
+        required: false
     environment:
       PORT: "8000"
       DATA_DIR: /app/data
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:?set PUBLIC_ORIGIN in .env.production}
       TRUST_PROXY_HEADERS: "true"
       RATE_LIMIT_ENABLED: "true"
     expose:

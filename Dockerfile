@@ -1,14 +1,14 @@
 FROM node:22-alpine AS viewer-build
 WORKDIR /viewer
 COPY viewer/package*.json ./
-RUN npm ci || npm install
+RUN npm ci
 COPY viewer/ ./
 RUN npm run build
 
 FROM node:22-alpine AS embed-build
 WORKDIR /embed
 COPY embed/package*.json ./
-RUN npm ci || npm install
+RUN npm ci
 COPY embed/ ./
 RUN npm run build
 

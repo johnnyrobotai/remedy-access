@@ -26,20 +26,18 @@ jobs:
         run: pytest -q
 
       - name: Install Playwright
-        run: |
-          pip install playwright
-          playwright install --with-deps chromium
+        run: playwright install --with-deps chromium
 
       - name: Build viewer
         working-directory: viewer
         run: |
-          npm ci || npm install
+          npm ci
           npm run build
 
       - name: Build embed
         working-directory: embed
         run: |
-          npm ci || npm install
+          npm ci
           npm run build
 
       - name: Stage built assets
@@ -52,3 +50,25 @@ jobs:
         env:
           RUN_AXE: "1"
         run: pytest -q tests/test_a11y.py::test_axe_core_against_fixture
+
+      - name: Build Docker image
+        run: docker build -t access-remedy-api:ci .
+
+      - name: Smoke test Docker image
+        run: |
+          docker run --rm -d --name access-remedy-ci -e PORT=8000 access-remedy-api:ci
+          trap 'docker rm -f access-remedy-ci' EXIT
+          for attempt in {1..30}; do
+            if docker exec access-remedy-ci python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2).read()"; then
+              exit 0
+            fi
+            sleep 1
+          done
+          docker logs access-remedy-ci
+          exit 1
+
+      - name: Validate production Compose file
+        env:
+          PUBLIC_HOST: access.example.com
+          PUBLIC_ORIGIN: https://access.example.com
+        run: docker compose -f docker-compose.prod.yml config --quiet

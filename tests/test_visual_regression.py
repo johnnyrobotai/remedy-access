@@ -22,7 +22,10 @@ _UPDATE_BASELINES = os.getenv("UPDATE_VISUAL_SNAPSHOTS") == "1"
 
 
 def _demo_pdf(name: str) -> bytes:
-    return (_REPO_ROOT / "demo" / "pdfs" / name).read_bytes()
+    path = _REPO_ROOT / "demo" / "pdfs" / name
+    if not path.exists():
+        pytest.skip(f"demo PDF fixture not present: {name}; run scripts/download_samples.sh")
+    return path.read_bytes()
 
 
 def _sha256(data: bytes) -> str:
